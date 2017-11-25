@@ -26,4 +26,5 @@ id = Column(Integer, primary_key=True)  # поле id -  первичный кл
 
 #### Иcточники
 *[SQLAlchemy](https://www.sqlalchemy.org/)
+
 *[Mimesis](http://mimesis.readthedocs.io/)
