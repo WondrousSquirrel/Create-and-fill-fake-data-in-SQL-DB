@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 # write type of connection - sqlite/mysql, database_name, password
-db = connect_to_db('mysql', 'drink_magazine', '')
+db = connect_to_db('mysql', 'drink_magazine', 'sl1pkn0t')
 
 if __name__ == '__main__':
 
