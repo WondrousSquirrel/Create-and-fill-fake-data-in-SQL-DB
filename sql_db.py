@@ -12,18 +12,18 @@ from sqlalchemy import (
     ForeignKey
 )
 
-def connect_to_db(t_engine, n_db, password, login='root', server='localhost'):
+def connect_to_db(t_engine, n_db, login='root', password='', server='localhost'):
     '''t_engine = type of database, n_db = name of database'''
-    DB_NAME = n_db
+    db_name = n_db
 
     if t_engine == 'sqlite':
-        db = create_engine('sqlite:///{0}.db'.format(DB_NAME))
+        db = create_engine('sqlite:///{0}.db'.format(db_name))
         return db
 
     elif t_engine == 'mysql':
         db = create_engine('mysql://{0}:{1}@{2}'.format(login, password, server))
-        db.execute('CREATE DATABASE IF NOT EXISTS {0}'.format(DB_NAME))
-        db.execute('USE {0}'.format(DB_NAME))
+        db.execute('CREATE DATABASE IF NOT EXISTS {0}'.format(db_name))
+        db.execute('USE {0}'.format(db_name))
         return db
 
     else:
@@ -93,9 +93,6 @@ class Products(Base):
     SupplierID = Column(Integer, ForeignKey(Suppliers.SupplierID))
     CategoryID = Column(Integer, ForeignKey(Categories.CategoryID))
     UnitPrice = Column(Integer)
-
-    #productD = relationship('OrderDetail', backref='product',
-     #                       order_by='OrderDetail.OrderDetID')
 
     def __repr_(self):
         return """id: '{0}' ProductName: '{1}' SupplierID: '{2}' CategoryID: '{2}'

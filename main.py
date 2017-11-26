@@ -1,12 +1,11 @@
 '''Execute script and fill fake data in db'''
 from sql_db import *
-# rom sql_db import connect_to_db
 from mimesis import Generic
 from sqlalchemy.orm import sessionmaker
 
 
-# write type of connection - sqlite/mysql, database_name, password
-db = connect_to_db('mysql', 'drink_magazine', 'sl1pkn0t')
+# write type of connection - sqlite/mysql, database_name
+db = connect_to_db('mysql', 'drink_magazine')
 
 if __name__ == '__main__':
 
@@ -30,9 +29,5 @@ if __name__ == '__main__':
         session.add_all([supp, orders, category, product, orderDet])
 
     session.commit()
-    '''
-    for orderD in session.query(Orders):
-        print(orderD)
-    '''
-    print('[OK]')
 
+    print('[OK]')
